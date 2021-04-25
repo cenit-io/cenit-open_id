@@ -1,0 +1,12 @@
+- providers ||= ::Cenit::OpenId.providers
+= stylesheet_link_tag 'open_id/social', media: :all
+%form{ id: 'openid_form', action: "/app/#{::Cenit::OpenId.app_key}", method: "get" }
+  %input{ name: "redirect_uri", value: redirect_uri, type: "hidden"}
+  %input{ id: 'openid_with_parameter', name: "with", type: "hidden"}
+  .openid.social{id: 'openid_social'}
+    - providers.each do |provider|
+      .provider
+        %button.btn{ value: provider }
+          = image_tag "open_id/social/#{provider}.png", style: "width:24px"
+          = provider.to_s.capitalize
+= javascript_include_tag 'open_id/social'

@@ -1,0 +1,14 @@
+.flex.full-v-width.full-v-height.justify-content-center.align-items-center
+  .flex.column.align-items-center.devise.box
+    %a
+      %img.avatar{ alt: "", src: user.picture_url }
+    .a{ style: "margin-top: 25px;font-size: large; text-align: center; display: block" }
+      .a
+        = user.name.presence || "#{user.given_name} #{user.family_name}"
+      .a
+        = user.email
+      .separator
+      %form{ method: "get", action: "/app/#{app.key}"}
+        .a
+          %button.btn.btn-primary
+            ="Play again"

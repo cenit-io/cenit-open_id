@@ -1,0 +1,17 @@
+.flex.full-v-width.full-v-height.justify-content-center.align-items-center
+  .flex.column.align-items-center.devise.box
+    .flex.full-width
+      = link_to Cenit.homepage, Cenit.homepage, class: 'link link-primary'
+    .separator
+    %a
+      = image_tag 'open_id/logo.png', class: 'openid avatar'
+    - if (providers = ::Cenit::OpenId.providers).present?
+      .text-separator
+        .label
+          ="Pick your favorite authentication provider"
+      .a
+        = render partial: 'form', locals: { redirect_uri: redirect_uri, providers: providers }
+    - else
+      .text-separator
+        .label
+          ="Ups! No authenticator providers are configured"

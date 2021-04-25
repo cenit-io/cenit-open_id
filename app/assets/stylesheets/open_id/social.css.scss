@@ -1,0 +1,44 @@
+
+.openid {
+
+  &.avatar {
+    width: 104px;
+  }
+
+  &.social {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .provider {
+      margin-top: 16px;
+
+      .btn {
+        background: none;
+        display: flex;
+        align-items: center;
+        border: solid 1px lightgray;
+        border-radius: 4px;
+        padding: 8px 14px;
+
+        &:hover {
+          border: solid 1px darkgrey;
+          cursor: pointer;
+
+          &:disabled {
+            border: solid 1px lightgrey;
+            cursor: inherit;
+          }
+        }
+
+        img {
+          margin-right: 16px;
+        }
+      }
+
+      & + .provider {
+        margin-left: 16px;
+      }
+    }
+  }
+}

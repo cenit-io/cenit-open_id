@@ -1,0 +1,14 @@
+
+
+google:
+  scope: openid email https://www.googleapis.com/auth/userinfo.profile
+  profile_url: https://www.googleapis.com/oauth2/v1/userinfo?alt=json
+
+facebook:
+  scope: email public_profile
+  profile_url: https://graph.facebook.com/v10.0/me
+
+github:
+  scope: read:user user:email
+  profile_url: https://api.github.com/user
+  emails_url: https://api.github.com//user/emails
