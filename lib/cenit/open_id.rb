@@ -24,22 +24,26 @@ module Cenit
     end
 
     def providers
-      app = self.app
-      providers = CONFIG.providers.map do |provider|
-        [app.configuration_attributes["#{provider}_client_id"], provider]
-      end.to_h
-      app.tenant.switch do
-        Setup::OauthClient.where(:id.in => providers.keys).map do |client|
-          providers[client.id]
+      ::User.with_super_access do
+        app = self.app
+        providers = CONFIG.providers.map do |provider|
+          [app.configuration_attributes["#{provider}_client_id"], provider]
+        end.to_h
+        app.tenant.switch do
+          Setup::OauthClient.where(:id.in => providers.keys).map do |client|
+            providers[client.id]
+          end
         end
       end
     end
 
     def get_user_by(code)
-      app.tenant.switch do
-        (code = Code.where(value: code).first) &&
-          code.active? &&
-          User.where(id: code.metadata['user_id']).first
+      ::User.with_super_access do
+        app.tenant.switch do
+          (code = Code.where(value: code).first) &&
+            code.active? &&
+            User.where(id: code.metadata['user_id']).first
+        end
       end
     end
   end
