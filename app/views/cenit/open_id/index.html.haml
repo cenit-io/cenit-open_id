@@ -1,7 +1,7 @@
-.flex.full-v-width.full-v-height.justify-content-center.align-items-center
+.responsive-box.centered
   .flex.column.align-items-center.devise.box
-    .flex.full-width
-      = link_to Cenit.homepage, Cenit.homepage, class: 'link link-primary'
+    .flex.full-width.justify-content-center
+      %a.logo{href: '/'}
     .separator
     %a
       = image_tag 'open_id/logo.png', class: 'openid avatar'
